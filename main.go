@@ -14,6 +14,7 @@ func init() {
 func main() {
 	initializers.DB.AutoMigrate(&models.Post{})
 	r := gin.Default()
+	r.Use(initializers.CorsMiddleware())
 	routes.SetupRoutes(r)
 	r.Run()
 }
